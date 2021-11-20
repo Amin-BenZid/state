@@ -8,6 +8,7 @@ class App extends React.Component {
     super(state);
     this.state = {
       show: true,
+      count: 0,
     };
   }
   ShowHide() {
@@ -19,16 +20,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ display: "flex" }}>
-        <div>
-          <div className="time">
-            {new Date().toLocaleString().substring(11) + ""}
+      <div>
+        <div style={{ display: "flex" }}>
+          <div>
+            <button className="butt" onClick={() => this.ShowHide()}>
+              Show/Hide
+            </button>
+            {this.state.show === true ? <Profile /> : null}
           </div>
-          <button className="butt" onClick={() => this.ShowHide()}>
-            Show/Hide
-          </button>
-          {this.state.show === true ? <Profile /> : null}
         </div>
+        <div>{setInterval(this.count + 1, 1000)}</div>
       </div>
     );
   }
